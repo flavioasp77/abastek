@@ -1,6 +1,7 @@
 package com.abastek.backend.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "equipment")
@@ -15,8 +16,9 @@ public class Equipment {
   @Column(nullable = false)
   private String name;
 
-  @Column(name = "manufacture_date", nullable = false)
-  private LocalDate manufactureDate;
+  @Column(name = "manufacture_date", nullable = false, columnDefinition = "TIMESTAMP")
+  @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+  private LocalDateTime manufactureDate;
 
   public Long getId() {
     return id;
@@ -34,11 +36,11 @@ public class Equipment {
     this.name = name;
   }
 
-  public LocalDate getManufactureDate() {
+  public LocalDateTime getManufactureDate() {
     return manufactureDate;
   }
 
-  public void setManufactureDate(LocalDate manufactureDate) {
+  public void setManufactureDate(LocalDateTime manufactureDate) {
     this.manufactureDate = manufactureDate;
   }
 }

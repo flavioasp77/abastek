@@ -1,7 +1,7 @@
 package com.abastek.backend.model;
 
+import java.time.LocalDateTime;
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "maintenance_report")
@@ -10,7 +10,7 @@ public class MaintenanceReport {
   private String equipmentCode;
   private String equipmentName;
   private String maintenanceDescription;
-  private LocalDate maintenanceDate;
+  private LocalDateTime maintenanceDate;
 
   public String getEquipmentCode() {
     return equipmentCode;
@@ -24,7 +24,7 @@ public class MaintenanceReport {
     return maintenanceDescription;
   }
 
-  public LocalDate getMaintenanceDate() {
+  public LocalDateTime getMaintenanceDate() {
     return maintenanceDate;
   }
 }

@@ -1,4 +1,6 @@
 package com.abastek.backend.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -12,8 +14,9 @@ public class Maintenance {
   @Column(nullable = false)
   private String description;
 
-  @Column(name = "maintenance_date", nullable = false)
-  private LocalDate maintenanceDate;
+  @Column(name = "maintenance_date", nullable = false, columnDefinition = "TIMESTAMP")
+  @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+  private LocalDateTime maintenanceDate;
 
   @ManyToOne
   @JoinColumn(name = "equipment_id", nullable = false)
@@ -31,11 +34,11 @@ public class Maintenance {
     this.description = description;
   }
 
-  public LocalDate getMaintenanceDate() {
+  public LocalDateTime getMaintenanceDate() {
     return maintenanceDate;
   }
 
-  public void setMaintenanceDate(LocalDate maintenanceDate) {
+  public void setMaintenanceDate(LocalDateTime maintenanceDate) {
     this.maintenanceDate = maintenanceDate;
   }
 
