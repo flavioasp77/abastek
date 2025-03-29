@@ -17,7 +17,7 @@ public class MaintenanceService {
         this.equipmentService = equipmentService;
     }
 
-    public List<Maintenance> getAllMaintenances() {
+    public List<Maintenance> getAllMaintenance() {
         return maintenanceRepository.findAll();
     }
 
@@ -33,7 +33,7 @@ public class MaintenanceService {
             if (existingEquipment.isPresent()) {
                 Equipment existing = existingEquipment.get();
                 if (maintenance.getMaintenanceDate().isBefore(existing.getManufactureDate())) {
-                    throw new IllegalArgumentException("Maintenance date cannot be before the manufacture date of the equipment.");
+                    throw new IllegalArgumentException("Data de manutenção não pode ser anterior a data de criação do equipamento.");
                 }
             }
         }
