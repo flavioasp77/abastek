@@ -1,0 +1,45 @@
+/* Estilos personalizados */
+.container {
+  max-width: 1200px;
+}
+
+.table {
+  margin-top: 20px;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.text-danger {
+  font-size: 0.875rem;
+}
+
+.table-responsive {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #343a40;
+  color: white;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.home-image {
+  border: 3px solid #dee2e6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.home-btn {
+  transition: all 0.3s ease;
+}
+
+.home-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
