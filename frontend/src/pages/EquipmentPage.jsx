@@ -1,13 +1,12 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Button, Table, Modal } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import EquipmentForm from '../components/EquipmentForm';
-import { AppContext } from '../context/AppContext';
-import { Edit, Delete } from '@mui/icons-material';
+import { useAppContext } from '../context/AppContext';
 import { deleteEquipment } from '../services/equipmentService';
 
 export default function EquipmentPage() {
-  const { equipments, fetchEquipments, token } = useContext(AppContext);
+  const { equipments, fetchEquipments, token } = useAppContext();
   const [showModal, setShowModal] = useState(false);
   const [selectedEquipment, setSelectedEquipment] = useState(null);
 
@@ -47,16 +46,33 @@ export default function EquipmentPage() {
             <tr key={equipment.id}>
               <td>{equipment.code}</td>
               <td>{equipment.name}</td>
-              <td>{new Date(equipment.manufacture_date).toLocaleDateString()}</td>
               <td>
-                <Button variant="link" onClick={() => {
-                  setSelectedEquipment(equipment);
-                  setShowModal(true);
-                }}>
-                  <Edit />
+                {new Date(equipment.manufactureDate).toLocaleString('pt-BR', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })}
+              </td>
+              <td>
+                <Button 
+                  variant="warning" 
+                  size="sm"
+                  className="me-2"
+                  onClick={() => {
+                    setSelectedEquipment(equipment);
+                    setShowModal(true);
+                  }}
+                >
+                  Editar
                 </Button>
-                <Button variant="link" onClick={() => handleDelete(equipment.id)}>
-                  <Delete />
+                <Button 
+                  variant="danger" 
+                  size="sm"
+                  onClick={() => handleDelete(equipment.id)}
+                >
+                  Excluir
                 </Button>
               </td>
             </tr>

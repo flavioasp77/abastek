@@ -7,13 +7,13 @@ export const getEquipments = (token) => {
 };
 
 export const createEquipment = (equipment, token) => {
-  return api.post("/equipments", equipment, {
+  return api.post("/equipment/create", equipment, {
     headers: { Authorization: token },
   });
 };
 
 export const updateEquipment = (id, equipment, token) => {
-  return api.put(`/equipments/update/${id}`, equipment, {
+  return api.put(`/equipment/update/${id}`, equipment, {
     headers: { Authorization: token },
   });
 };

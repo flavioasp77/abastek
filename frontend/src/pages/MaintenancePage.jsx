@@ -1,15 +1,15 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import { Button, Table, Modal } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import MaintenanceForm from '../components/MaintenanceForm';
-import { AppContext } from '../context/AppContext';
-import { Edit, Delete } from '@mui/icons-material';
-import { deleteMaintenance } from '../services/maintenanceService'
+import { useAppContext } from '../context/AppContext';
+import { deleteMaintenance } from '../services/maintenanceService';
 
 export default function MaintenancePage() {
-  const { maintenances, equipments, fetchMaintenances, token } = useContext(AppContext);
+  const { maintenances, equipments, fetchMaintenances, token } = useAppContext();
   const [showModal, setShowModal] = useState(false);
   const [selectedMaintenance, setSelectedMaintenance] = useState(null);
+  console.log("manutenções", maintenances);
 
   const handleDelete = async (id) => {
     try {
@@ -46,17 +46,35 @@ export default function MaintenancePage() {
           {maintenances.map(maintenance => (
             <tr key={maintenance.id}>
               <td>{maintenance.description}</td>
-              <td>{new Date(maintenance.maintenance_date).toLocaleDateString()}</td>
+              <td>
+                {new Date(maintenance.maintenanceDate).toLocaleString('pt-BR', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })}
+              </td>
+               {/* <td>{new Date(maintenance.maintenance_date).toLocaleDateString()}</td> */}
               <td>{maintenance.equipment?.name} ({maintenance.equipment?.code})</td>
               <td>
-                <Button variant="link" onClick={() => {
-                  setSelectedMaintenance(maintenance);
-                  setShowModal(true);
-                }}>
-                  <Edit />
+                <Button 
+                  variant="warning" 
+                  size="sm"
+                  className="me-2"
+                  onClick={() => {
+                    setSelectedMaintenance(maintenance);
+                    setShowModal(true);
+                  }}
+                >
+                  Editar
                 </Button>
-                <Button variant="link" onClick={() => handleDelete(maintenance.id)}>
-                  <Delete />
+                <Button 
+                  variant="danger" 
+                  size="sm"
+                  onClick={() => handleDelete(maintenance.id)}
+                >
+                  Excluir
                 </Button>
               </td>
             </tr>

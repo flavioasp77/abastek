@@ -13,19 +13,19 @@ export const getMaintenanceById = (id, token) => {
 };
 
 export const createMaintenance = (maintenance, token) => {
-  return api.post("/maintenance", maintenance, {
+  return api.post("/maintenance/create", maintenance, {
     headers: { Authorization: token },
   });
 };
 
 export const updateMaintenance = (id, maintenance, token) => {
-  return api.put(`/maintenance/${id}`, maintenance, {
+  return api.put(`/maintenance/update/${id}`, maintenance, {
     headers: { Authorization: token },
   });
 };
 
 export const deleteMaintenance = (id, token) => {
-  return api.delete(`/maintenance/${id}`, {
+  return api.delete(`/maintenance/delete/${id}`, {
     headers: { Authorization: token },
   });
 };
