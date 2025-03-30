@@ -75,6 +75,8 @@ Para iniciar o servidor, utilize o seguinte comando:
 mvn spring-boot:run
 ```
 
+Na pasta raiz temum arquivo **Postman-abastek** com as requisições para testar no **Postman**
+
 ## 🏗 Escolhas Tecnológicas
 
 ### **Spring Web + Spring JPA**
@@ -90,3 +92,5 @@ Optamos por uma estrutura **MSC** para organizar melhor o código:
 - **Controller:** Responsável por receber as requisições HTTP e interagir com os services.
 
 Essa abordagem facilita a manutenção, expansão e testes do sistema.
+
+OBS: Tive muitos problemas para configurar o spring web com o Java 8 uma vez que a nova versão do spring não dá suporte para java 8 atraves do site **spring intializr**, que só sá suporte para as versõs 17, 21 e 24. Portanto tive que fazer toda configuração na mão e com consulta ao chatgpt. Infelizmente perdi muito tempo e não consegui fazer o projeto completo. Agracederia se puder explicar melhor o que houve de forma presencial ou através de uam call no meet ou zoom.
