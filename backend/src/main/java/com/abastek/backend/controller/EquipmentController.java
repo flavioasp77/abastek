@@ -4,6 +4,7 @@ import com.abastek.backend.model.Equipment;
 import com.abastek.backend.service.EquipmentService;
 import java.util.List;
 import java.util.NoSuchElementException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,7 +50,7 @@ public class EquipmentController {
     }
   }
 
-  @PutMapping("update/{id}")
+  @PutMapping("/update/{id}")
   public ResponseEntity<?> updateEquipment(
       @PathVariable Long id,
       @RequestBody Equipment updatedEquipment) {
@@ -65,11 +66,15 @@ public class EquipmentController {
     }
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/delete/{id}")
   public ResponseEntity<?> deleteEquipment(@PathVariable Long id) {
     try {
       equipmentService.deleteEquipment(id);
       return ResponseEntity.noContent().build();
+    } catch (DataIntegrityViolationException e) {
+      // Captura violação de FK, unique constraint, etc.
+      return ResponseEntity.status(HttpStatus.CONFLICT)
+          .body("Não é possível excluir: o equipamento está vinculado a manutenções.");
     } catch (NoSuchElementException e) {
       return ResponseEntity.notFound().build();
     } catch (Exception e) {

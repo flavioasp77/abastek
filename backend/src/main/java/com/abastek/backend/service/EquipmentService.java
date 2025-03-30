@@ -32,6 +32,9 @@ public class EquipmentService {
       Equipment equipment = existingEquipment.get();
       equipment.setName(updatedEquipment.getName());
       equipment.setManufactureDate(updatedEquipment.getManufactureDate());
+      if (!updatedEquipment.getCode().equals(equipment.getCode())) {
+          throw new IllegalArgumentException("Código do equipamento não pode ser alterado!");
+      }
       return equipmentRepository.save(equipment);
     } else {
       return null;
