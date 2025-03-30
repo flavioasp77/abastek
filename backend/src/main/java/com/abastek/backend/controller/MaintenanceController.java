@@ -37,7 +37,7 @@ public class MaintenanceController {
         .orElse(ResponseEntity.notFound().build());
   }
 
-  @PostMapping
+  @PostMapping("/create")
   public ResponseEntity<?> createMaintenance(@RequestBody Maintenance maintenance) {
     try {
       Maintenance createdMaintenance = maintenanceService.createMaintenance(maintenance);
@@ -49,7 +49,7 @@ public class MaintenanceController {
     }
   }
 
-  @PutMapping("/{id}")
+  @PutMapping("/update/{id}")
   public ResponseEntity<?> updateMaintenance(
       @PathVariable Long id,
       @RequestBody Maintenance updatedMaintenance) {
@@ -65,7 +65,7 @@ public class MaintenanceController {
     }
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/delete/{id}")
   public ResponseEntity<?> deleteMaintenance(@PathVariable Long id) {
     try {
       maintenanceService.deleteMaintenance(id);

@@ -11,6 +11,7 @@ public class MaintenanceReport {
   private String equipmentName;
   private String maintenanceDescription;
   private LocalDateTime maintenanceDate;
+  private LocalDateTime manufacturedDate;
 
   public String getEquipmentCode() {
     return equipmentCode;
@@ -26,5 +27,9 @@ public class MaintenanceReport {
 
   public LocalDateTime getMaintenanceDate() {
     return maintenanceDate;
+  }
+
+  public LocalDateTime getManufacturedDate() {
+    return manufacturedDate;
   }
 }
