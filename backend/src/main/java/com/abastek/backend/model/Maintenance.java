@@ -14,8 +14,7 @@ public class Maintenance {
   @Column(nullable = false)
   private String description;
 
-  @Column(name = "maintenance_date", nullable = false, columnDefinition = "TIMESTAMP")
-  @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+  @Column(name = "maintenance_date", nullable = false)
   private LocalDateTime maintenanceDate;
 
   @ManyToOne
