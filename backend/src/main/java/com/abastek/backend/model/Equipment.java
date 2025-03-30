@@ -1,5 +1,5 @@
 package com.abastek.backend.model;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import javax.persistence.*;
 
@@ -16,8 +16,7 @@ public class Equipment {
   @Column(nullable = false)
   private String name;
 
-  @Column(name = "manufacture_date", nullable = false, columnDefinition = "TIMESTAMP")
-  @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+  @Column(name = "manufacture_date", nullable = false)
   private LocalDateTime manufactureDate;
 
   public Long getId() {

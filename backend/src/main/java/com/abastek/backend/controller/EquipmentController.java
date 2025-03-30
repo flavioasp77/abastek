@@ -31,13 +31,13 @@ public class EquipmentController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<?> getEquipmentById(@PathVariable Long id) {
+  public ResponseEntity<?> getEquipmentById(@PathVariable("id") Long id) {
     return equipmentService.getEquipmentById(id)
         .map(ResponseEntity::ok)
         .orElse(ResponseEntity.notFound().build());
   }
 
-  @PostMapping
+  @PostMapping("/create")
   public ResponseEntity<?> createEquipment(@RequestBody Equipment equipment) {
     try {
       Equipment createdEquipment = equipmentService.createEquipment(equipment);
@@ -49,7 +49,7 @@ public class EquipmentController {
     }
   }
 
-  @PutMapping("/{id}")
+  @PutMapping("update/{id}")
   public ResponseEntity<?> updateEquipment(
       @PathVariable Long id,
       @RequestBody Equipment updatedEquipment) {
@@ -75,10 +75,5 @@ public class EquipmentController {
     } catch (Exception e) {
       return ResponseEntity.internalServerError().body("Error deleting equipment");
     }
-  }
-
-  @GetMapping("/healthCheck")
-  public ResponseEntity<Boolean> healthCheck() {
-    return ResponseEntity.ok(true);
   }
 }
