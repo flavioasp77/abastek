@@ -9,9 +9,9 @@ public class MaintenanceReport {
   @Id
   private String equipmentCode;
   private String equipmentName;
+  private LocalDateTime equipmentManufactureDate;
   private String maintenanceDescription;
   private LocalDateTime maintenanceDate;
-  private LocalDateTime manufacturedDate;
 
   public String getEquipmentCode() {
     return equipmentCode;
@@ -29,7 +29,7 @@ public class MaintenanceReport {
     return maintenanceDate;
   }
 
-  public LocalDateTime getManufacturedDate() {
-    return manufacturedDate;
+  public LocalDateTime getEquipmentManufactureDate() {
+    return equipmentManufactureDate;
   }
 }
