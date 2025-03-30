@@ -91,6 +91,33 @@ Optamos por uma estrutura **MSC** para organizar melhor o código:
 - **Service:** Contém a lógica de negócio, garantindo a separação de responsabilidades.
 - **Controller:** Responsável por receber as requisições HTTP e interagir com os services.
 
-Essa abordagem facilita a manutenção, expansão e testes do sistema.
+# Frontend
 
-OBS: Tive muitos problemas para configurar o spring web com o Java 8 uma vez que a nova versão do spring não dá suporte para java 8 atraves do site **spring intializr**, que só sá suporte para as versõs 17, 21 e 24. Portanto tive que fazer toda configuração na mão e com consulta ao chatgpt. Infelizmente perdi muito tempo e não consegui fazer o projeto completo. Agracederia se puder explicar melhor o que houve de forma presencial ou através de uam call no meet ou zoom.
+Instale as dependências e inicie o servidor:
+
+```sh
+npm install
+npm start
+```
+
+## 🏗 Escolhas Tecnológicas
+
+### **React 18**
+
+Última versão a dar suporte ao create-react-app (CRA)
+
+### **Bootstrap**
+
+padronização do CSS
+
+### **Yup**
+
+Validação conforme requisito
+
+### **Toastify**
+
+Padronização das notificações
+
+### **ChatGPT e DeepSeek**
+
+Auxilio na resolução de problemas e codificação
